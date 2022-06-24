@@ -16,8 +16,15 @@ MongoClient.connect(dbConnectionString)
     .then(client => {
         console.log('Connected to Database')
         db = client.db(dbName)
-        collection = db.collection('chat')
+        collection = db.collection('chat')                  //change name here
     })
+
+app.set('view engine','ejs')                                //helps create HTML
+app.use(express.static('public'))
+app.use(express.urlencoded({extended:true}))
+app.use(express.json())
+app.use(cors())
+
 
 
     //PORT = 8000
