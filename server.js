@@ -1,11 +1,10 @@
 const express =require('express')
 const app= express()
 const cors = require('cors')
-const { response } = require('express')
+// const { response } = require('express')
 const MongoClient =require('mongodb').MongoClient
-
 require('dotenv').config()
-
+const PORT =8000
 
 let db,
     dbConnectionString = process.env.DB_STRING,
@@ -26,9 +25,9 @@ app.use(express.urlencoded({extended:true}))
 app.use(express.json())
 app.use(cors())
 
-app.get('/', async(req,res)=>{
-try{response.render('index.ejs')
-
+app.get('/', async(request,response) => {
+try { 
+    response.render('index.ejs')
 } catch (error) {
 response.status(500).send({message: error.message})
 }
